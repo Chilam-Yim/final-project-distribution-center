@@ -47,7 +47,6 @@ public class Item {
     private Brand brandFrom;
     @Builder.Default
     private LocalDateTime createdAt = LocalDateTime.now();
-
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "distribution_center_id", nullable = false)

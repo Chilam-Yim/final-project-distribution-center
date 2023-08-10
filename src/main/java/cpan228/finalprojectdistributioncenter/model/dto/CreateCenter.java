@@ -2,6 +2,7 @@ package cpan228.finalprojectdistributioncenter.model.dto;
 
 import cpan228.finalprojectdistributioncenter.model.DistributionCenter;
 import cpan228.finalprojectdistributioncenter.model.Item;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,7 +14,7 @@ import java.util.List;
 public class CreateCenter {
     @NotBlank
     private String name;
-    @OneToMany(mappedBy = "distributionCenter")
+    @OneToMany(mappedBy = "distributionCenter", cascade = CascadeType.ALL)
     private List<Item> items;
     @NotNull
     private Double latitude;

@@ -42,6 +42,7 @@ public class SecurityConfig {
                 .headers().frameOptions().disable().and()
                 .cors().and()
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
+                        .requestMatchers(toH2Console()).permitAll()
                         .requestMatchers("/api/center/**").permitAll()
                         .requestMatchers("/api/item/**").permitAll()
                         .requestMatchers("/api/delete/**").authenticated()

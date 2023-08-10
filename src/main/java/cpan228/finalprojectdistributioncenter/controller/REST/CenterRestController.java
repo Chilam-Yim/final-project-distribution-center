@@ -42,6 +42,12 @@ public class CenterRestController {
         }
     }
 
+    @GetMapping("/{id}")
+    public DistributionCenter getCenter(@PathVariable Long id) {
+        var selectedCenter = centerRepository.findById(id);
+        return selectedCenter.get();
+    }
+
     @GetMapping("/{id}/items")
     public List<Item> getCenterItems(@PathVariable Long id) {
         var selectedCenter = centerRepository.findById(id);

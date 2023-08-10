@@ -1,20 +1,14 @@
 package cpan228.finalprojectdistributioncenter.controller.REST;
 
-import java.util.List;
-import java.util.Optional;
 
 import cpan228.finalprojectdistributioncenter.model.DistributionCenter;
 import cpan228.finalprojectdistributioncenter.model.Item;
 import cpan228.finalprojectdistributioncenter.model.dto.CreateCenter;
+import cpan228.finalprojectdistributioncenter.model.dto.UpdateItem;
 import cpan228.finalprojectdistributioncenter.repository.DistributionCenterRepository;
 import cpan228.finalprojectdistributioncenter.repository.DistributionCenterRepositoryPaginated;
 import cpan228.finalprojectdistributioncenter.repository.ItemRepository;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
 
@@ -45,4 +39,15 @@ public class CenterUpdateController {
         return centerRepository.save(centerToUpdate);
     }
 
+    @PutMapping("/items/{itemId}")
+    public Item updateCenterItem(@PathVariable Long itemId, @Valid @RequestBody UpdateItem item) {
+        var itemToUpdate = itemRepository.findById(itemId).orElseThrow();
+        itemToUpdate.setName(item.getName());
+        itemToUpdate.setQuantity(item.getQuantity());
+        itemToUpdate.setPrice(item.getPrice());
+        itemToUpdate.setBrandFrom(item.getBrandFrom());
+        itemToUpdate.setCreateYear(item.getCreateYear());
+        itemToUpdate.setDistributionCenter(itemToUpdate.getDistributionCenter());
+        return itemRepository.save(itemToUpdate);
+    }
 }
