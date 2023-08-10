@@ -42,7 +42,7 @@ public class CenterUpdateController {
         centerToUpdate.setItems(center.getItems());
         centerToUpdate.setLatitude(center.getLatitude());
         centerToUpdate.setLongitude(center.getLongitude());
-        return centerRepository.save(center.toDistributionCenter());
+        return centerRepository.save(centerToUpdate);
     }
 
 }

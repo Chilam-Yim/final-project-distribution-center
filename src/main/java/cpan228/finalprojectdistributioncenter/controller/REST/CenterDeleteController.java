@@ -36,24 +36,29 @@ public class CenterDeleteController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCenter(@PathVariable("id") Long id) {
+    public void deleteSelectedCenter(@PathVariable("id") Long id) {
         centerRepository.deleteById(id);
     }
 
-    @DeleteMapping("/{id}/items/{itemId}")
-    public void deleteItemFromCenter(@PathVariable Long id, @PathVariable("itemId") Long itemId) {
-        var selectedCenter = centerRepository.findById(id);
-        var selectedCenterItems = selectedCenter.get().getItems();
-        var itemToDelete = itemRepository.findById(itemId);
-        selectedCenterItems.remove(itemToDelete.get());
+    @DeleteMapping("/items/{itemId}")
+    public void deleteItemFromSelectedCenter(@PathVariable("itemId") Long itemId) {
         itemRepository.deleteById(itemId);
     }
 
     @DeleteMapping("/{id}/items/all")
-    public void deleteAllItemsFromCenter(@PathVariable Long id) {
+    public void deleteAllItemsFromSelectedCenter(@PathVariable Long id) {
         var selectedCenter = centerRepository.findById(id);
         var selectedCenterItems = selectedCenter.get().getItems();
         selectedCenterItems.clear();
+    }
+
+    @DeleteMapping("/all/centers")
+    public void deleteAllCenters() {
+        centerRepository.deleteAll();
+    }
+
+    @DeleteMapping("/all/items")
+    public void deleteAllItemsFromCenter() {
         itemRepository.deleteAll();
     }
 
