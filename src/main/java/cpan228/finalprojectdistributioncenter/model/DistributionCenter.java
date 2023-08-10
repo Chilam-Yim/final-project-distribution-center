@@ -25,6 +25,6 @@ public class DistributionCenter {
     private Double latitude;
     @NotNull
     private Double longitude;
-    @OneToMany(mappedBy = "distributionCenter")
+    @OneToMany(mappedBy = "distributionCenter", cascade = CascadeType.ALL)
     private List<Item> items;
 }

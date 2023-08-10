@@ -17,7 +17,7 @@ import static org.springframework.boot.autoconfigure.security.servlet.PathReques
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig{
+public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -30,6 +30,7 @@ public class SecurityConfig{
                 .username("admin")
                 .password(passwordEncoder().encode("1234"))
                 .roles("ADMIN")
+                .authorities("ADMIN")
                 .build();
         return new InMemoryUserDetailsManager(user);
     }
@@ -40,8 +41,12 @@ public class SecurityConfig{
                 .csrf().disable()
                 .headers().frameOptions().disable().and()
                 .cors().and()
-                .authorizeHttpRequests((authz) -> authz
-                        .anyRequest().authenticated()
+                .authorizeHttpRequests(authorizeRequests -> authorizeRequests
+                        .requestMatchers("/api/center/**").permitAll()
+                        .requestMatchers("/api/item/**").permitAll()
+                        .requestMatchers("/api/delete/**").authenticated()
+                        .requestMatchers("/api/update/**").authenticated()
+                        .requestMatchers("/api/add/**").authenticated()
                 ).httpBasic(Customizer.withDefaults());
         return http.build();
     }
