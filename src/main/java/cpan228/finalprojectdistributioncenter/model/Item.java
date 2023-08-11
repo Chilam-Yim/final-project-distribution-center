@@ -30,6 +30,7 @@ public class Item {
     @Min(2022)
     private Integer createYear;
     @NotNull
+    @Min(0)
     private int quantity;
     @NotNull
     @DecimalMin(value = "1000", inclusive = false)

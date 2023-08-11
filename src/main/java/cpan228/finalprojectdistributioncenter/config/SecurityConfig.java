@@ -46,7 +46,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/center/**").permitAll()
                         .requestMatchers("/api/item/**").permitAll()
                         .requestMatchers("/api/delete/**").authenticated()
-                        .requestMatchers("/api/update/**").authenticated()
+                        .requestMatchers("/api/update/**").permitAll()
                         .requestMatchers("/api/add/**").authenticated()
                 ).httpBasic(Customizer.withDefaults());
         return http.build();

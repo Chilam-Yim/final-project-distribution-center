@@ -39,14 +39,14 @@ public class CenterUpdateController {
         return centerRepository.save(centerToUpdate);
     }
 
-    @PutMapping("/items/{itemId}")
-    public Item updateCenterItem(@PathVariable Long itemId, @Valid @RequestBody UpdateItem item) {
+    @PutMapping("/items/{itemId}/quantities={quantity}")
+    public Item updateCenterItem(@PathVariable Long itemId, @PathVariable int quantity, @Valid @RequestBody UpdateItem item) {
         var itemToUpdate = itemRepository.findById(itemId).orElseThrow();
-        itemToUpdate.setName(item.getName());
-        itemToUpdate.setQuantity(item.getQuantity());
-        itemToUpdate.setPrice(item.getPrice());
-        itemToUpdate.setBrandFrom(item.getBrandFrom());
-        itemToUpdate.setCreateYear(item.getCreateYear());
+        itemToUpdate.setName(itemToUpdate.getName());
+        itemToUpdate.setQuantity(itemToUpdate.getQuantity()- quantity);
+        itemToUpdate.setPrice(itemToUpdate.getPrice());
+        itemToUpdate.setBrandFrom(itemToUpdate.getBrandFrom());
+        itemToUpdate.setCreateYear(itemToUpdate.getCreateYear());
         itemToUpdate.setDistributionCenter(itemToUpdate.getDistributionCenter());
         return itemRepository.save(itemToUpdate);
     }
