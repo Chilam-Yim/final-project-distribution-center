@@ -5,6 +5,4 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface DistributionCenterRepository extends CrudRepository<DistributionCenter, Long> {
 
-
-
 }

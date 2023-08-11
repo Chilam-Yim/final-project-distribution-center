@@ -22,7 +22,7 @@ public class FinalProjectDistributionCenterApplication {
 	public CommandLineRunner dataLoader(ItemRepository itemRepository, DistributionCenterRepository centerRepository) {
 		return args -> {
 			var distributionCenter1 = centerRepository
-					.save(DistributionCenter.builder().name("location 1").latitude(10.0).longitude(10.9).build());
+					.save(DistributionCenter.builder().name("location 1").latitude(43.711615).longitude(-79.401982).build());
 			itemRepository
 					.save(Item.builder().name("Small Nomad Bag")
 							.createYear(2024)
@@ -49,7 +49,7 @@ public class FinalProjectDistributionCenterApplication {
 	CommandLineRunner dataLoader2(ItemRepository itemRepository, DistributionCenterRepository centerRepository) {
 		return args -> {
 			var distributionCenter2 = centerRepository
-					.save(DistributionCenter.builder().name("location 2").latitude(10.0).longitude(10.9).build());
+					.save(DistributionCenter.builder().name("location 2").latitude(43.762160).longitude(-79.284125).build());
 			itemRepository
 					.save(Item.builder()
 							.name("Box Logo Hoodie")
@@ -81,7 +81,7 @@ public class FinalProjectDistributionCenterApplication {
 	CommandLineRunner dataLoader3(ItemRepository itemRepository, DistributionCenterRepository centerRepository) {
 		return args -> {
 			var distributionCenter3 = centerRepository
-					.save(DistributionCenter.builder().name("location 3").latitude(10.0).longitude(10.9).build());
+					.save(DistributionCenter.builder().name("location 3").latitude(43.631470).longitude(-79.527526).build());
 			itemRepository
 					.save(Item.builder()
 							.name("Air Jordan 1 Retro High Off-White Chicago")
@@ -107,7 +107,7 @@ public class FinalProjectDistributionCenterApplication {
 	CommandLineRunner dataLoader4(ItemRepository itemRepository, DistributionCenterRepository centerRepository) {
 		return args -> {
 			var distributionCenter4 = centerRepository
-					.save(DistributionCenter.builder().name("location 4").latitude(10.0).longitude(10.9).build());
+					.save(DistributionCenter.builder().name("location 4").latitude(43.774829).longitude(-79.186823).build());
 			itemRepository
 					.save(Item.builder()
 							.name("Jacket")
